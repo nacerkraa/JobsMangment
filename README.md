@@ -9,20 +9,20 @@ Web Application for Job mangement ( Spring boot + JSP + JDBC + MySQL).
 
 - please make sure you have eclipse ide enterprise for web development if not then re install set up & choose web option.
 
- (1)
+ (1) Clone and import project in Eclipse Ide
 ```sh
-Download and import project in Eclipse Ide
+clone https://github.com/nacerkraa/MAG_Project.git
 ```
- (2)
+ (2) Create a database with name :- mag_db;
 ```sh
- Make database name :- mag_db;
+ create database mag_db;
  ```
-  (3)
+  (3) import mag_db.sql file in database to Create all table 
 ```sh
- import mag_db.sql file in database to Create all table 
+ excute path/mag_db.sql
  ```
 
-(4)
+(4) Open the project on the browser
 ```sh
 Right click project and run as spring boot & open:- http://localhost:8080/
 ```
