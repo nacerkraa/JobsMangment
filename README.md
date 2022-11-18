@@ -15,11 +15,11 @@ clone https://github.com/nacerkraa/MAG_Project.git
 ```
  (2) Create a database with name :- mag_db;
 ```sh
- create database mag_db;
+create database mag_db;
  ```
   (3) import mag_db.sql file in database to Create all table 
 ```sh
- excute path/mag_db.sql
+excute path/mag_db.sql
  ```
 
 (4) Open the project on the browser
