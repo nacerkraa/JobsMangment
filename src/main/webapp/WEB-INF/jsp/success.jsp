@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-     <h2 align="center"> Hello ${name}!</h2>
+	<h1>You are logged in successfully!</h1>
 </body>
 </html>
