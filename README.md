@@ -15,11 +15,11 @@ Download and import project in Eclipse Ide
 ```
  (2)
 ```sh
- Make database name :- springproject 
+ Make database name :- mag_db;
  ```
   (3)
 ```sh
- import springproject.sql file in database to Create all table 
+ import mag_db.sql file in database to Create all table 
  ```
 
 (4)
