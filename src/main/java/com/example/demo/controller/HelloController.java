@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.User;
 import com.example.demo.model.userOperations;
+
 
 
 
@@ -42,17 +46,18 @@ public class HelloController {
     }
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("user") User  user, Model model) throws SQLException {
+    public String submit(@ModelAttribute("user") User  user, Model model,HttpSession ses) throws SQLException {
     
 	/* for the form validation */
 	Map<String, String> messages = new HashMap<String, String>();
-	User x = obj.getUserByEmail(user.getEmail());
+	User u = obj.getUserByEmail(user.getEmail());
 	boolean res = obj.authentify(user);
+	addUserInSession(u,ses);
 	
 	if (res) {
 		messages.put("message", "You are logged successfully!");
 		model.addAttribute("messages", messages);
-		if (x.getType().equals("admin")) {
+		if (u.getType().equals("admin")) {
 			return "dashboardAdmin";
 		} else {
 			return "home";
@@ -63,8 +68,24 @@ public class HelloController {
 		model.addAttribute("errors", messages);
 		return "user/userForm";
 	}
-	
-   
     }
+	
+	
+	@RequestMapping("/logout")
+	public String showLougout(HttpSession session) throws SQLException {
+	    	
+	    	session.invalidate() ;
+	        return "redirect:/";
+	}
+	
+	public void addUserInSession(User u,HttpSession session){
+	   	session.setAttribute("User", u);
+	   	session.setAttribute("firstname", u.getFirstName());
+	   	session.setAttribute("lastname", u.getLastName());
+	   	session.setAttribute("email", u.getEmail());
+	}
+	
+	
     
-}
+ }
+

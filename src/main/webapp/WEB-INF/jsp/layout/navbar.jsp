@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- create navigation bar -->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
@@ -6,23 +9,37 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/login">Registration and Login module</a>
-        </li>
-        
-        
-        
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      	<c:if test="${sessionScope.User == null}">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/login">Login</a>
+	        </li>
+        </c:if>
+        <c:if test="${sessionScope.User != null}">
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            User: ${sessionScope.firstname}
+	          </a>
+	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	            <li><a class="dropdown-item" href="#">Profile</a></li>
+	            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+	            <li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+	          </ul>
+	        </li>
+	    </c:if>
+      </ul>
     </div>
   </div>
 </nav>
