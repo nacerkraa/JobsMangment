@@ -14,6 +14,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">About us</a>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -22,9 +25,13 @@
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       	<c:if test="${sessionScope.User == null}">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="/login">Login</a>
+      		<li class="nav-item">
+	          <button type="button" class="btn btn-primary btn-sm me-3"> <a class="nav-link active" aria-current="page" href="#">Register</a></button>
 	        </li>
+	        <li class="nav-item">
+	          <button type="button" class="btn btn-outline-primary btn-sm"> <a class="nav-link active" aria-current="page" href="/login">Login</a></button>
+	        </li>
+	        
         </c:if>
         <c:if test="${sessionScope.User != null}">
 	        <li class="nav-item dropdown">
