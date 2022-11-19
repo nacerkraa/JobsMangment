@@ -46,17 +46,18 @@ public class HelloController {
     
 	/* for the form validation */
 	Map<String, String> messages = new HashMap<String, String>();
-
-	
-	
-	
-	
+	User x = obj.getUserByEmail(user.getEmail());
 	boolean res = obj.authentify(user);
 	
 	if (res) {
 		messages.put("message", "You are logged successfully!");
 		model.addAttribute("messages", messages);
-		return "home";
+		if (x.getType().equals("admin")) {
+			return "dashboardAdmin";
+		} else {
+			return "home";
+		}
+		
 	} else {
 		messages.put("message", "The email or the password is not correct!");
 		model.addAttribute("errors", messages);
