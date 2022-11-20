@@ -24,7 +24,7 @@ create database mag_db;
  ```
   (4) import mag_db.sql file in database to Create all table 
 ```sh
-excute path/mag_db.sql
+source path/mag_db.sql
  ```
 
   (5) Open the project on the browser
