@@ -11,7 +11,7 @@ Web Application for Job mangement ( Spring boot + JSP + JDBC + MySQL).
 
   (1) Clone the project 
 ```sh
-clone https://github.com/nacerkraa/MAG_Project.git
+git clone https://github.com/nacerkraa/MAG_Project.git
 ```
   (2) import project in Eclipse Ide
  ```sh
