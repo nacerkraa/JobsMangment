@@ -17,11 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.dao.User;
 import com.example.demo.model.userOperations;
 
-
-
-
-
-
 /**
  * Create HelloController for testing the application
  * @author Nacer
@@ -41,6 +36,23 @@ public class UserController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegisterForm() {
         return new ModelAndView("user/registerForm", "user", new User());
+    }
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(@ModelAttribute("user") User  user, Model model,HttpSession ses) throws SQLException {
+		
+		System.out.println("firstname:" + user.getFirstName());
+		System.out.println("lastname:" + user.getLastName());
+		System.out.println("email: " + user.getEmail());
+		System.out.println("password: " + user.getPassword());
+		System.out.println("Phone: " + user.getPhone());
+		System.out.println("Sexe: " + user.getSexe());
+		System.out.println("Age: " + user.getAge());
+		System.out.println("Localisation: " + user.getLocation());
+		System.out.println("type: " + user.getType());
+		obj.addUser(user);
+		return "redirect:/";
+	
     }
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

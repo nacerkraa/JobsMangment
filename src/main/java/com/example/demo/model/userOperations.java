@@ -11,6 +11,7 @@ import com.example.demo.dao.User;
 
 
 
+
 public class userOperations {
 
 	private static ConnexionBase con;
@@ -80,6 +81,37 @@ public class userOperations {
 	        U= new User(FirstName, LastName, Email,Password, Phone,Sexe,  Age, location, Type);
 		}
 		return U;
+	}
+	
+	public boolean addUser(User u) {
+		String query = "insert into user(nom, prenom, email, motpasse, tel, sexe, age, location, type) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement st = null;
+		int r = 0;
+		boolean b= false;
+		try {
+			if(!authentify(u)) {
+				
+			st = this.Connect.prepareStatement(query);
+			st.setString(1, u.getFirstName());
+			st.setString(2, u.getLastName());
+			st.setString(3, u.getEmail());
+			st.setString(4, u.getPassword());
+			st.setString(5, u.getPhone());
+			st.setString(6, u.getSexe());
+			st.setInt(7, u.getAge());
+			st.setString(8, u.getLocation());
+			st.setString(9, u.getType());
+
+			
+			r = st.executeUpdate();
+			st.close();
+			b=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return b;
 	}
 	
 	

@@ -33,10 +33,6 @@
 				    <label for="inputPassword4" class="form-label">Password</label>
 				    <form:input path="password" type="password" class="form-control" id="inputPassword1" required="required" />
 				  </div>
-				  <div class="col-md-4">
-				    <label for="inputPassword4" class="form-label">Confirm Password</label>
-				   <form:input path="password" type="password" class="form-control" id="inputPassword2" required="required" />
-				  </div>
 				  <div class="col-4">
 				    <label for="inputAddress" class="form-label">Address</label>
 				    <form:input path="location" type="text" class="form-control" id="inputAddress" autocomplete="off" placeholder="14 Rue ..." required="required" />
@@ -51,18 +47,14 @@
 				  </div>
 				  <div class="col-md-2">
 				    <label for="inputState" class="form-label">Gender</label>
-				    <select id="inputState" class="form-select">
-				      <option selected>Male</option>
-				      <option>Female</option>
-				    </select>
+				    <form:select path="sexe" id="inputState" class="form-select">
+				      <form:option path="sexe" value="male">Male</form:option>
+				      <form:option path="sexe" value="female">Female</form:option>
+				    </form:select>
 				  </div>
-				  <div class="col-12">
-				    <div class="form-check">
-				      <input class="form-check-input" type="checkbox" id="gridCheck">
-				      <label class="form-check-label" for="gridCheck">
-				        Check me out
-				      </label>
-				    </div>
+				  <div class="col-4">
+				    <label for="inputType" class="form-label">Type</label>
+				    <form:input path="type" type="text" class="form-control" id="inputPhone" autocomplete="off" required="required" />
 				  </div>
 				  <div class="col-12">
 				    <button type="submit" class="btn btn-primary">Sign in</button>
