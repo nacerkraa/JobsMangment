@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,7 +61,7 @@ public class UserController {
 		messages.put("message", "You are logged successfully!");
 		model.addAttribute("messages", messages);
 		if (u.getType().equals("admin")) {
-			return "dashboardAdmin";
+			return "admin/dashboardAdmin";
 		} else {
 			return "home";
 		}
