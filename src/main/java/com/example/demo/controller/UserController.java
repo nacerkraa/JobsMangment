@@ -30,7 +30,7 @@ import com.example.demo.model.userOperations;
  *
  */
 @Controller
-public class HelloController {
+public class UserController {
 	
 	userOperations obj = new  userOperations();
 	
@@ -40,9 +40,14 @@ public class HelloController {
         return "home";
     }
 	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView showRegisterForm() {
+        return new ModelAndView("user/registerForm", "user", new User());
+    }
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView showForm() {
-        return new ModelAndView("user/userForm", "user", new User());
+    public ModelAndView showLoginForm() {
+        return new ModelAndView("user/loginForm", "user", new User());
     }
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -66,7 +71,7 @@ public class HelloController {
 	} else {
 		messages.put("message", "The email or the password is not correct!");
 		model.addAttribute("errors", messages);
-		return "user/userForm";
+		return "user/loginForm";
 	}
     }
 	

@@ -19,8 +19,8 @@
      <div class="container">
 	     <div class="row">
 		     <div class="col-md-6 col-md-offset-3">
-		     	<!-- success message -->
 		     	<h2>Submit Form</h2>
+		     	<!-- success message -->
 		     	<c:if test = "${errors.message != null}">
 			        <div class="alert alert-warning" role="alert">
 					  ${errors.message}
@@ -31,19 +31,16 @@
 				  <div class="row mb-3">
 				    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 				    <div class="col-sm-10">
-				      <form:input path="email" type="email" class="form-control" id="inputEmail" autocomplete="off"/>
-				      
-				      	
+				      <form:input path="email" type="email" class="form-control" id="inputEmail" autocomplete="off" required="required" />	
 				    </div>
 				  </div>
 				  
 				  <div class="row mb-3">
 				    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 				    <div class="col-sm-10">
-				      <form:input path="password" type="password" class="form-control" id="inputPassword" />
+				      <form:input path="password" type="password" class="form-control" id="inputPassword" required="required" />
 				    </div>
 				  </div>
-				  
 				  
 				  <button type="submit" class="btn btn-primary">Sign in</button>
 				</form:form>
