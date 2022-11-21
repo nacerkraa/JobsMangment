@@ -35,23 +35,22 @@ public class UserController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegisterForm() {
-        return new ModelAndView("user/registerForm", "user", new User());
+		return new ModelAndView("user/registerForm", "user", new User());
     }
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@ModelAttribute("user") User  user, Model model,HttpSession ses) throws SQLException {
+		Map<String, String> messages = new HashMap<String, String>();
+		addUserInSession(user,ses);
+		boolean res = obj.addUser(user);
+		if(res) {
+			return "redirect:/";
+		}else {
+			messages.put("message", "The user is Alredy exist!");
+			model.addAttribute("messages", messages);
+			return "user/registerForm";
+		}
 		
-		System.out.println("firstname:" + user.getFirstName());
-		System.out.println("lastname:" + user.getLastName());
-		System.out.println("email: " + user.getEmail());
-		System.out.println("password: " + user.getPassword());
-		System.out.println("Phone: " + user.getPhone());
-		System.out.println("Sexe: " + user.getSexe());
-		System.out.println("Age: " + user.getAge());
-		System.out.println("Localisation: " + user.getLocation());
-		System.out.println("type: " + user.getType());
-		obj.addUser(user);
-		return "redirect:/";
 	
     }
 	
@@ -63,15 +62,17 @@ public class UserController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String submit(@ModelAttribute("user") User  user, Model model,HttpSession ses) throws SQLException {
     
+	
 	/* for the form validation */
 	Map<String, String> messages = new HashMap<String, String>();
-	User u = obj.getUserByEmail(user.getEmail());
 	boolean res = obj.authentify(user);
-	addUserInSession(u,ses);
+	
 	
 	if (res) {
 		messages.put("message", "You are logged successfully!");
 		model.addAttribute("messages", messages);
+		User u = obj.getUserByEmail(user.getEmail());
+		addUserInSession(u,ses);
 		if (u.getType().equals("admin")) {
 			return "admin/dashboardAdmin";
 		} else {
