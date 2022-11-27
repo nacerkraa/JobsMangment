@@ -114,5 +114,29 @@ public class userOperations {
 			return b;
 	}
 	
+	//update les info de etablissement
+
+
+	public boolean updateEtab(User x) {
+		String query = "update users set nom = '"+x.getFirstName()+"',prenom='"+x.getLastName()+"', email='"+x.getEmail()+ "', motpasse ='"+x.getPassword()+ "', tel ='"+x.getPhone()+ "', sexe ='"+x.getSexe()+ "', age ='"+x.getAge()+"' where email='"+x.getEmail()+"'";
+		
+		PreparedStatement st = null;
+		int r = 0;
+		boolean b= false;
+		try {
+			
+			st = this.Connect.prepareStatement(query);
+			r = st.executeUpdate();
+			st.close();
+			b=true;
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return b;
+	}
+
+	
 	
 }
