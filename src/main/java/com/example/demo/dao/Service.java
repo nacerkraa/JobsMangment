@@ -15,9 +15,6 @@ public class Service {
 	}
 
 
-	
-
-
 	public Service(String title, String description, String location, String emailUser) {
 		super();
 		this.title = title;
@@ -25,9 +22,21 @@ public class Service {
 		this.location = location;
 		this.emailUser = emailUser;
 	}
+	
+	
 
 
 
+
+
+	public Service(int id, String title, String description, String location, String emailUser) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.location = location;
+		this.emailUser = emailUser;
+	}
 
 
 	public int getId() {

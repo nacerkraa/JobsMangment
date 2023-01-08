@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import com.example.demo.dao.Service;
 
 
-
 public class ServiceOperation {
 	private static ConnexionBase con;
 	private static Connection Connect;
@@ -53,17 +52,52 @@ public class ServiceOperation {
 		 ResultSet rs = st.executeQuery(readData);
 		
 		while (rs.next()) {
+			int id = rs.getInt("id");
 			String title = rs.getString("name");
 	    	String description = rs.getString("description");
 	    	String emailUser = rs.getString("emailUser");
 	    	String location  = rs.getString("location");
 	    	
-	    	 S = new Service(title, description, location, emailUser);
+	    	 S = new Service(id,title, description, location, emailUser);
 		     list.add(S);
 		}
-		
- 
         return list;
 	}
+
+	
+	public void deleteService(int idService) {
+		String delete ="DELETE FROM service WHERE  id='"+idService+"'" ;
+         PreparedStatement st;
+		try {
+			 st = Connect.prepareStatement(delete);
+		     st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+	
+	public Service getServiceById(String idService) throws SQLException {
+		Service  S =null ;
+		String readData = "select * from service where id = '" + idService +"'";
+		Statement st = Connect.createStatement();
+		ResultSet rs = st.executeQuery(readData);
+		
+		while (rs.next()) {
+			
+			int id = rs.getInt("id");
+	        String title = rs.getString("name");
+	        String description = rs.getString("description");
+			String location = rs.getString("location");
+	        String emailUser = rs.getString("emailUser");
+
+	        S = new Service(id, title, description, location, emailUser);
+		}
+		return S;
+	}
+	
+	 
 	
 }

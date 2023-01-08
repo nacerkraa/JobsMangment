@@ -13,6 +13,7 @@
 	<jsp:include page="/WEB-INF/jsp/layout/navbar.jsp"></jsp:include>
 	<!--  navbar end -->
 	<div class="container">
+	<h2>List Of Services: </h2>
 	<table class="table table-striped table-dark">
 	  <thead>
 	    <tr>
@@ -27,8 +28,8 @@
 	    <tr>
 	      <th scope="row">${service.title}</th>
 		  <td>${service.description}</td>
-		  <td>${service.location}</td>
-	      <td><span class="action ajuter"><a href="editItem/${service.id}">Ajouter</a></span><span class="action suprimer">&nbsp;<a href="delete/${service.id}">Suprimer</a></span></td>
+		  <td>${service.emailUser}</td>
+	      <td><span class="action ajuter"><a href="editService/${service.id}">Edit</a></span><span class="action suprimer">&nbsp;<a href="deleteService/${service.id}">Suprimer</a></span></td>
 	    </tr>
 	   </c:forEach>
 	  </tbody>
