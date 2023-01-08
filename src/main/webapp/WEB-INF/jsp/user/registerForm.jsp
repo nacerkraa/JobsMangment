@@ -54,7 +54,7 @@
 				  </div>
 				  <div class="col-4">
 				    <label for="inputType" class="form-label">Type</label>
-				    <form:input path="type" type="text" class="form-control" id="inputPhone" autocomplete="off" required="required" />
+				    <form:input path="type" type="hidden" value="client" class="form-control" id="inputPhone" autocomplete="off" required="required" />
 				  </div>
 				  <div class="col-12">
 				    <button type="submit" class="btn btn-primary">Sign in</button>
