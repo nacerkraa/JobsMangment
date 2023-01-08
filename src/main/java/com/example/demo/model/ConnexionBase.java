@@ -8,7 +8,7 @@ public class ConnexionBase {
 	public static final String Host="jdbc:mysql://localhost:3306/";
 	public static final String DB_Name="mag_db";
 	public static final String USERNAME= "root";
-	public static final String PASSWORD="";
+	public static final String PASSWORD="123456789";
 	
 	private static Connection connect=null;
 	public ConnexionBase() {

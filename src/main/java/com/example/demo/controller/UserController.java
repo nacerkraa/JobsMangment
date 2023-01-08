@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.User;
 import com.example.demo.model.userOperations;
+
 
 /**
  * Create HelloController for testing the application
@@ -86,6 +88,14 @@ public class UserController {
 	}
     }
 	
+	@RequestMapping(value="/modiferCompteUser/{email}")
+    public String edit(@PathVariable String email, Model m) throws SQLException{
+    	
+    	User user = obj.getUserByEmail(email);
+        m.addAttribute("command" , user);
+        return "/user/editUser";
+    }
+	
 	
 	@RequestMapping("/logout")
 	public String showLougout(HttpSession session) throws SQLException {
@@ -96,6 +106,7 @@ public class UserController {
 	
 	public void addUserInSession(User u,HttpSession session){
 	   	session.setAttribute("User", u);
+	   	session.setAttribute("id", u.getId());
 	   	session.setAttribute("firstname", u.getFirstName());
 	   	session.setAttribute("lastname", u.getLastName());
 	   	session.setAttribute("email", u.getEmail());
