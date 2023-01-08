@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.example.demo.dao.Service;
 
 
+
 public class ServiceOperation {
 	private static ConnexionBase con;
 	private static Connection Connect;
@@ -42,6 +43,26 @@ public class ServiceOperation {
 			e.printStackTrace();
 		}
 			return b;
+	}
+	
+	public ArrayList<Service> viewAllById(String string) throws SQLException {
+		Service S ;
+		ArrayList<Service> list = new ArrayList<Service>();
+		String readData = "select * from service where emailUser = +'"+ string +"'";
+		Statement st = Connect.createStatement();
+		 ResultSet rs = st.executeQuery(readData);
+		
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			String title = rs.getString("name");
+	    	String description = rs.getString("description");
+	    	String emailUser = rs.getString("emailUser");
+	    	String location  = rs.getString("location");
+	    	
+	    	 S = new Service(id,title, description, location, emailUser);
+		     list.add(S);
+		}
+        return list;
 	}
 	
 	public ArrayList<Service> viewAll() throws SQLException {
@@ -96,6 +117,27 @@ public class ServiceOperation {
 	        S = new Service(id, title, description, location, emailUser);
 		}
 		return S;
+	}
+
+
+
+	public boolean updateService(Service service) {
+		String query = "update service set name = '"+service.getTitle()+"',description='"+service.getDescription()+"', location='"+service.getLocation()+"' where id = '"+service.getId()+"'";
+		PreparedStatement st = null;
+		int r = 0;
+		boolean b= false;
+		try {
+			
+			st = this.Connect.prepareStatement(query);
+			r = st.executeUpdate();
+			st.close();
+			b=true;
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return b;
 	}
 	
 	 

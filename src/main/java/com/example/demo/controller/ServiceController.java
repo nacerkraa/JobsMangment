@@ -15,6 +15,7 @@ import com.example.demo.model.ServiceOperation;
 
 
 
+
 @Controller
 public class ServiceController {
 	ServiceOperation obj = new  ServiceOperation();
@@ -54,8 +55,13 @@ public class ServiceController {
     public String edit(@PathVariable String id, Model m) throws SQLException{
     	
     	Service service = obj.getServiceById(id);
-    	System.out.println(service.getTitle());
         m.addAttribute("service" , service);
         return "/service/editService";
+    }
+	
+	@RequestMapping(value="/editsaveService",method = RequestMethod.POST)    
+    public String editsave(@ModelAttribute("service") Service service){
+    	obj.updateService(service);
+    	return "redirect:/listServices";
     }
 }

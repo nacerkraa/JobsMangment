@@ -16,23 +16,23 @@
 	<div class="container">
 	     <div class="row">
 		     	<h2>Edit Service</h2>
-				<form:form class="row g-3" method="POST" action="${pageContext.request.contextPath}/editsave" modelAttribute="service">
+				<form:form class="row g-3" method="POST" action="${pageContext.request.contextPath}/editsaveService" modelAttribute="service">
+				  
+				  
 				  <div class="col-md-3">
-				    <label for="inputText4" class="form-label">Name of The Service:</label>
+				    <label for="title" class="form-label">Name of The Service:</label>
 				    <form:input path="title" type="text" class="form-control" id="idTitle" autocomplete="off" required="required" />
 				  </div>
 				  <div class="col-md-3">
-				    <label for="inputText4" class="form-label">Description: </label>
+				    <label for="description" class="form-label">Description: </label>
 				    <form:input path="description" type="text" class="form-control" id="inputDescription" autocomplete="off" required="required" />
 				  </div>
-				  
 				  <div class="col-md-6">
-				    <label for="inputEmail4" class="form-label">Location:</label>
+				    <label for="location" class="form-label">Location:</label>
 				    <form:input path="location" type="text" class="form-control" id="inputEmail" autocomplete="off" required="required"  />
 				  </div>
-				  
-				  <div class="col-md-6">
-				    <form:input path="emailUser" type="hidden"  value="${sessionScope.email}" class="form-control" id="inputEmail" autocomplete="off" required="required" />
+				  <div class="col-md-3">
+				    <form:input path="id" type="hidden" class="form-control" id="idTitle" autocomplete="off" required="required" />
 				  </div>
 		
 				  <div class="col-12">
