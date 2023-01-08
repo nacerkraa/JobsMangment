@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.example.demo.dao.Service;
-import com.example.demo.dao.User;
+
+
 
 public class ServiceOperation {
 	private static ConnexionBase con;
@@ -41,6 +43,27 @@ public class ServiceOperation {
 			e.printStackTrace();
 		}
 			return b;
+	}
+	
+	public ArrayList<Service> viewAll() throws SQLException {
+		Service S ;
+		ArrayList<Service> list = new ArrayList<Service>();
+		String readData = "select * from service";
+		Statement st = Connect.createStatement();
+		 ResultSet rs = st.executeQuery(readData);
+		
+		while (rs.next()) {
+			String title = rs.getString("name");
+	    	String description = rs.getString("description");
+	    	String emailUser = rs.getString("emailUser");
+	    	String location  = rs.getString("location");
+	    	
+	    	 S = new Service(title, description, location, emailUser);
+		     list.add(S);
+		}
+		
+ 
+        return list;
 	}
 	
 }
