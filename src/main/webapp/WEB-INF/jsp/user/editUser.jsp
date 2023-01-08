@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Register Form</title>
+<title>Insert title here</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
 	<div class="container">
 	     <div class="row">
 		     	<h2>Register Form</h2>
-				<form:form class="row g-3" method="POST" action="/register" modelAttribute="user">
+				<form:form class="row g-3" method="POST" action="${pageContext.request.contextPath}/editsaveEtab" modelAttribute="user">
 				  <div class="col-md-3">
 				    <label for="inputText4" class="form-label">First Name:</label>
 				    <form:input path="firstName" type="text" class="form-control" id="inputFirstName" autocomplete="off" required="required" />
@@ -63,7 +63,6 @@
 			
 		</div>
 	</div>
-	<script src="<c:url value="/resources/js/jquery.js" />"></script>
-	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+	
 </body>
 </html>
