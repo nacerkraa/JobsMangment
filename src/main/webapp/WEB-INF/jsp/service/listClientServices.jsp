@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List Services</title>
+<title>List Client Services</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 </head>
 <body>
@@ -13,8 +13,9 @@
 	<jsp:include page="/WEB-INF/jsp/layout/navbar.jsp"></jsp:include>
 	<!--  navbar end -->
 	<div class="container">
+	<button type="button" class="btn btn-outline-primary btn-sm"> <a class="nav-link active" aria-current="page" href="/addService">Add Service +</a></button>
 	<br>
-	<h2>List Of All Services: </h2>
+	<h2>Your Services: </h2>
 	
 	<table class="table table-striped table-dark">
 	  <thead>
@@ -28,13 +29,14 @@
 	  <tbody>
 	  <c:forEach var="service" items="${services}">
 	  	
-
+	  	<c:if test = "${sessionScope.email == service.emailUser}">
 			<tr>
 		      <th scope="row">${service.title}</th>
 			  <td>${service.description}</td>
 			  <td>${service.location}</td>
 		      <td><span class="action ajuter"><a href="editService/${service.id}">Edit</a></span><span class="action suprimer">&nbsp;<a href="deleteService/${service.id}">Suprimer</a></span></td>
 		    </tr>
+		</c:if>
 	   </c:forEach>
 	  </tbody>
 	</table>

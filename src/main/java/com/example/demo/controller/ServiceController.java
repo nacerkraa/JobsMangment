@@ -21,13 +21,22 @@ public class ServiceController {
 	ServiceOperation obj = new  ServiceOperation();
 	
 	@RequestMapping("/listServices")   
-    public String showDataCommande(@ModelAttribute("service") Service service,Model m) throws SQLException {
+    public String showAllServices(@ModelAttribute("service") Service service,Model m) throws SQLException {
     	
     	ArrayList<Service> listService = obj.viewAll();
     	
         m.addAttribute("services",listService);
         return "service/listServices";
-}
+	}
+	
+	@RequestMapping("/listClientServices")   
+    public String showDataServices(@ModelAttribute("service") Service service,Model m) throws SQLException {
+    	
+    	ArrayList<Service> listService = obj.viewAll();
+    	
+        m.addAttribute("services",listService);
+        return "service/listClientServices";
+	}
 	
 	@RequestMapping(value = "/addService", method = RequestMethod.GET)
     public ModelAndView showRegisterForm() {

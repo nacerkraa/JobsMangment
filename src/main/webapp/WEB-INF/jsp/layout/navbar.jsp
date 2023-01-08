@@ -19,7 +19,7 @@
           <a class="nav-link active" aria-current="page" href="#">About us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Other Services</a>
+          <a class="nav-link active" aria-current="page" href="/listServices">Other Services</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -46,7 +46,7 @@
 	            <li><a class="dropdown-item" href="#">Profile</a></li>
 	            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
 	            <li><a class="dropdown-item" href="addService">Add a New Service</a></li>
-	            <li><a class="dropdown-item" href="listServices">Your Services</a></li>
+	            <li><a class="dropdown-item" href="/listClientServices">Your Services</a></li>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="/logout">Logout</a></li>
 	          </ul>
