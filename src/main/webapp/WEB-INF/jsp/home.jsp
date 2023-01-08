@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Home | Page</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 </head>
 <body>
 	
@@ -23,7 +24,7 @@
 		 	</c:if>
 	     <h2 align="center"> Hello User!</h2>
 	    <c:if test="${sessionScope.User != null}">
-			<a href="/addService">Add Service</a>
+			
 	    </c:if>
 	     <p align="center">This is Home page</p>
 	   </div>
